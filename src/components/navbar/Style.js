@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.nav`
     width: 100vw;
-    height: 8vh;
+    height: 5em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@ export const Container = styled.nav`
     #logoDiv{
         #logo{
             text-decoration:none;
-            font-size: 1.1em;
+            font-size: 1.5em;
             text-transform: uppercase;
             font-weight: 800;
         }
@@ -40,9 +40,6 @@ export const Container = styled.nav`
                 list-style: none;
             }
         }
-        
-        
-
         .listItem{
             text-decoration: none;
         }   
