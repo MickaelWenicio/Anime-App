@@ -45,6 +45,7 @@ const Home = () => {
           <div id='trendingCharacters'>
             <TopChars limitedChars={limitedChars} />
           </div>
+          
         </div>
     </Container>
   )

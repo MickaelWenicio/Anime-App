@@ -50,3 +50,17 @@ export const Container = styled.div`
     }
 
 `
+
+export const Loading = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .loadingGifDiv{
+        padding-top: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+`
