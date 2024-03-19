@@ -15,10 +15,10 @@ export const Container = styled.div`
         width: 100%;
 
         .trendingTitle{
-            border-left: solid 3px red;
+            border-left: solid .2em red;
             padding: .4em 0 .4em;
             h2{
-                letter-spacing: 2px;
+                letter-spacing: 1px;
                 padding-left: .5em;
                 font-size: 1.8em;
             }
@@ -30,8 +30,21 @@ export const Container = styled.div`
                 color: var(--text-gray);
                 font-weight: 500;
             }
-            
-            
+        }
+    }
+
+    .trendingCategoryTitle{
+        margin-top: 4vh;
+        margin-bottom: 2vh;
+        h2{
+            font-weight: 500;
+        }
+
+        .divisor{
+            margin-top: .5em;
+            height: .1em;
+            width: 8em;
+            background-color:red;
         }
     }
 `

@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
-    margin-top: 5vh;
+    h2{
+        font-weight: 500;
+        margin-bottom: 2vh;
+    }
 
     ul {
         list-style: none;
