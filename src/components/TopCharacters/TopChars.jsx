@@ -5,6 +5,8 @@ import LoadingGif from '../../../public/YlWC.gif'
 const TopChars = () => {
     const [topCharacters, setTopCharacters] = useState([]);
     const [limitedChars, setLimitedChars] = useState([])
+    const [loading, setLoading] = useState(true)
+
     //chamar a api
     useEffect(()=>{
         const url = 'https://api.jikan.moe/v4/top/characters';
@@ -13,6 +15,7 @@ const TopChars = () => {
             const json = await response.json();
             const data = await json.data;
             setTopCharacters(data);
+            setLoading(false);
         };
         setCharacters();
     },[]);
@@ -25,8 +28,17 @@ const TopChars = () => {
         console.log(limitedChars)
     },[topCharacters])
 
+    if (loading) {
+       return (
+            <Loading>
+                <div className='loadingGifDiv'>
+                    <img src={LoadingGif}/>
+                </div>
+            </Loading>
+       )
+    }
 
-    if (limitedChars.length > 0) {
+    if(limitedChars.length > 0) {
         return (
             <Container>
                 <ul>
@@ -42,15 +54,9 @@ const TopChars = () => {
                 </ul>
             </Container>
         )
-    } else {
-        return (
-                <Loading>
-                    <div className='loadingGifDiv'>
-                        <img src={LoadingGif}/>
-                    </div>
-                </Loading>
-        )
     }
+
+    return <h3>Nenhum Anime Encontrado...</h3>
 }
 
 export default TopChars

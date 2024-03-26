@@ -1,52 +1,56 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
-    ul {
-        list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    ul{
         display: flex;
-        gap: 20px;
+        flex-wrap: wrap;
         width: 100%;
-
+        gap: 15px;
+        list-style: none;
+        
         li{
+            transition: ease-in-out .3s;
+            cursor: pointer;
+            width: calc(20% - 12px);
             position: relative;
-            width: 30vw;
+            /* height: 10%; */
 
             img{
-                filter: brightness(50%);
-                transition: all ease-in-out 0.3s;
-                clip-path: inset(3px 3px 3px 3px); 
-                border-radius: 15px;
                 width: 100%;
+                height: 90%;
+                object-fit: cover;
+                border-radius: 10px;
+                filter: brightness(70%);
+                
             }
-
-            img:hover{
-                transform: scale(1.15);
-                cursor: pointer;
-                filter: brightness(100%);
-            }
-
             h3{
+                font-size: 1.3em;
                 text-align: center;
                 position: absolute;
-                top: 80%;
+                top: 60%;
                 left: 50%;
                 transform: translate(-50%,-50%);
                 transition: all ease-in-out 0.5s;
-                opacity: 80%;
                 pointer-events: none;
+                text-shadow: 1px 1px 5px black;
             }
-            
         }
 
         li:hover{
-            h3{
-                opacity: 0;
-                
+            transform: scale(1.1);
+            
+            img{
+                filter: brightness(100%);
             }
+            h3{
+                opacity: 0%;
+            }   
         }
     }
-
 `
 
 export const Loading = styled.div`

@@ -56,12 +56,12 @@ export const Container = styled.div`
 
         .trendingTitle{
             border-left: solid .2em red;
-            padding: .4em 0 .4em;
+            padding: .2em 0 .2em;
             h2{
                 font-weight: 800;
                 letter-spacing: 1px;
-                padding-left: .5em;
-                font-size: 1.8em;
+                padding-left: .3em;
+                font-size: 2em;
             }
         }
 
