@@ -44,14 +44,15 @@ export const Container = styled.div`
                 height: 90%;
                 object-fit: cover;
                 border-radius: 10px;
-                filter: brightness(70%);
+                filter: brightness(50%);
                 
             }
             h3{
-                font-size: 1.3em;
+                width: 90%;
+                font-size: 1em;
                 text-align: center;
                 position: absolute;
-                top: 60%;
+                top: 70%;
                 left: 50%;
                 transform: translate(-50%,-50%);
                 transition: all ease-in-out 0.5s;
