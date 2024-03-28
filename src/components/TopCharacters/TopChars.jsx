@@ -23,7 +23,7 @@ const TopChars = () => {
     //verificar se topCharacters é maior que 0 que caso seja modificar os caracteres limitados
     useEffect(()=>{
         if(topCharacters.length > 0){
-        setLimitedChars(topCharacters.slice(0,6))
+            setLimitedChars(topCharacters.slice(0,6))
         }
         console.log(limitedChars)
     },[topCharacters])

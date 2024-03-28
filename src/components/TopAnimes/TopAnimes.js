@@ -4,7 +4,27 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
+
+    button{
+       color: #ffffff;
+       background: none;
+       border: none;
+       border-bottom: solid 2px red;
+       padding: .5em;
+       font-size: 1.1em;
+       outline: none;
+       cursor: pointer;
+       transition: all ease-in-out 0.3s;
+       border-radius: 5px 5px 0 0;
+       margin-top: 1em;
+    }
+
+    button:hover{
+       background: #2b2b2b;
+    }
+
     ul{
         display: flex;
         flex-wrap: wrap;

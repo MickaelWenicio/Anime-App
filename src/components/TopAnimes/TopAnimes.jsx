@@ -1,69 +1,91 @@
 import { useState, useEffect } from 'react'
-import {Container, Loading} from './TopAnimes'
+import { Container, Loading } from './TopAnimes'
 import LoadingGif from '../../../public/YlWC.gif'
 
 const TopAnimes = () => {
-    const [fullTopAnimes, setFullTopAnimes] = useState([])
+    const [fullTopAnimes, setFullTopAnimes] = useState([]);
+    const [limitedAnimes, setLimitedAnimes] = useState([])
     const [topAnimes, setTopAnimes] = useState([]);
-    const [loading, setLoading] = useState(true)
-    
+    const [loading, setLoading] = useState(true);
+    const [showMore, setShowMore] = useState(false);
+
     //chamar a api
-    useEffect(()=>{
+    useEffect(() => {
         const url = 'https://api.jikan.moe/v4/top/anime';
-        const setAnimes = async ()=>{
+        const setAnimes = async () => {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
                 const data = await json.data;
                 setFullTopAnimes(data);
                 setLoading(false);
-            } catch (e){
+            } catch (e) {
                 console.error(e);
             };
-    
+
         };
         setAnimes();
-    },[]);
+    }, []);
 
-    useEffect(()=>{
-        if(fullTopAnimes){
+    useEffect(() => {
+        if (fullTopAnimes) {
             setTopAnimes([...fullTopAnimes])
-        }
-    },[fullTopAnimes]);
+        };
+    }, [fullTopAnimes]);
+
+    useEffect(() => {
+        if (topAnimes) {
+            setLimitedAnimes([...topAnimes.slice(0, 10)])
+        };
+    }, [topAnimes]);
 
     if (loading) {
         return (
             <Loading>
                 <div className='loadingGifDiv'>
-                    <img src={LoadingGif}/>
+                    <img src={LoadingGif} />
                 </div>
             </Loading>
-       )
+        );
+    };
+
+    {
+        if (showMore) {
+            return (
+                <Container>
+                    <ul>
+                        {topAnimes.map((anime) => {
+                            return (
+                                <li key={anime.mal_id}>
+                                    <img src={anime.images.jpg.image_url} alt={anime.title} />
+                                    <h3>{anime.title}</h3>
+                                </li>
+
+                            );
+                        })}
+                    </ul>
+                    <button onClick={() => { setShowMore(false) }}>Mostrar Menos</button>
+                </Container>
+            )
+        } else {
+            return (
+                <Container>
+                    <ul>
+                        {limitedAnimes.map((anime) => {
+                            return (
+                                <li key={anime.mal_id}>
+                                    <img src={anime.images.jpg.image_url} alt={anime.title} />
+                                    <h3>{anime.title}</h3>
+                                </li>
+
+                            );
+                        })}
+                    </ul>
+                    <button onClick={() => { setShowMore(true) }}>Mostrar Mais</button>
+                </Container>
+            )
+        }
     }
-
-
-    console.log(topAnimes)
-    if(topAnimes.length > 0) {
-        return (
-            <Container>
-                <ul>
-                    {topAnimes.map((anime) => {
-                        return (
-                            <li key={anime.mal_id}>
-                                <img src={anime.images.jpg.image_url} alt={anime.title} />
-                                <h3>{anime.title}</h3>
-                            </li>
-                           
-                        )
-                    })}
-                </ul>
-            </Container>
-        )
-    } else {
-        return <h1>Nenhum anime encontrado</h1>
-    }
-
-    
 }
 
-export default TopAnimes
+export default TopAnimes;
